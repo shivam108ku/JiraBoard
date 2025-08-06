@@ -1,15 +1,11 @@
 .app{
-    display: grid;
-    grid-template-rows: 150px auto ;
-}
-.app_main{
-    display: flex;
-    justify-content: space-evenly;
-    padding: 20px 8%;
+  display:grid;
+  grid-template-rows: 150px auto;
 }
 
-.task{
-    width: 30%;
-    background-color: red;
-    margin: 20px;
+.app_main{
+  display: flex;
+  justify-content: space-evenly;
+  padding:20px 8%;
 }
+
