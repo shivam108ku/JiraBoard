@@ -9,6 +9,10 @@ const TaskForm = () => {
     tags: [],
   });
 
+  const checkTag = (tag)=>{
+    return taskData.tags.some((item) => item === tag)
+  }
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setTaskData((prev) => {
@@ -60,9 +64,22 @@ const TaskForm = () => {
 
         <div className="task_form_bottom">
           <div>
-            <Tag tagName="DEV" selectedTag={selectedTag} />
-            <Tag tagName="QA" selectedTag={selectedTag} />
-            <Tag tagName="Product Owner" selectedTag={selectedTag} />
+            <Tag 
+            tagName="DEV" 
+            selectedTag={selectedTag} 
+            selected={checkTag('DEV')} />
+
+            <Tag 
+            tagName="QA" 
+            selectedTag={selectedTag}
+            selected={checkTag('QA')} />
+
+            <Tag 
+            tagName="Product Owner" 
+            selectedTag={selectedTag}
+            selected={checkTag('Product Owner')}
+             />
+
           </div>
           <div>
             <select
