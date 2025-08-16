@@ -25,32 +25,19 @@ const TaskForm = () => {
   }; 
 
   const selectedTag = (tag) => {
-    if (taskData.tags.some((item) => item === tag)) {
-      const filterTags = taskData.tags.filter((item) => item !== tag);
-      setTaskData((prev) => {
-        return { ...prev, tags: filterTags };
-      });
-    } else {
-      setTaskData(prev=>{
-        return {...prev,tags: [...prev.tags, tag]};
-      })
-    }
+
+    setTaskData((prev)=>{
+        const isSelected = prev.tags.includes(tag);
+        const tags = isSelected 
+        ? prev.tags.filter((item) => item !== tag)
+        : [...prev.tags, tag]
+
+        return { ...prev , tags};
+      })    
   };
+  
   console.log(taskData);
-
-  // const [task , setTask] = useState("");
-  // const [status , setStatus] = useState("");
-
-  // const handleTask = (e) => {
-  //     setTask(e.target.value)
-  // }
-
-  // const handleStatusChange = (e) => {
-  //     setStatus(e.target.value);
-  // }
-
-  // console.log(status);
-  // console.log(task)
+ 
   return (
     <header className="app_header">
       <form onSubmit={handleSubmit}>

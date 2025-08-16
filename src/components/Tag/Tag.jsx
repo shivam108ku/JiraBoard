@@ -1,20 +1,9 @@
 import React from "react";
 import "./Tag.css";
+import { tageStyle , tagKeyMap } from "../../constant/common";
 
 const Tag = (props) => {
-  const { tagName, selectedTag, selected } = props;
-
-  const tageStyle = {
-    DEV:{backgroundColor: '#04caff'},
-    QA:{backgroundColor: '#ff2e04'},
-    PO:{backgroundColor: '#04ff2a'},
-  }
-
-  const tagKeyMap = {
-    "DEV":"DEV",
-    "QA":"QA",
-    "Product Owner":"PO"
-  }
+  const { tagName, selectedTag, selected } = props; 
   const key = tagKeyMap[tagName]
 
   return (
