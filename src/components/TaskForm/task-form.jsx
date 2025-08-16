@@ -25,6 +25,12 @@ const TaskForm = ({ setTask }) => {
     setTask((prev) => {
       return [...prev, taskData];
     });
+
+    setTaskData({
+      task: "",
+      status: "Ready for Development",
+      tags: [],
+    });
   };
 
   const selectedTag = (tag) => {
@@ -46,6 +52,7 @@ const TaskForm = ({ setTask }) => {
         <input
           type="text"
           name="task"
+          value={taskData.task}
           placeholder="Enter Class Details"
           className="task_input"
           onChange={handleChange}
@@ -75,6 +82,7 @@ const TaskForm = ({ setTask }) => {
             <select
               className="task_status"
               name="status"
+              value={taskData.status}
               onChange={handleChange}
             >
               <option value="Ready For Development">
