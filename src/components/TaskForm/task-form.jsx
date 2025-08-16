@@ -2,16 +2,16 @@ import "./task-form.css";
 import Tag from "../Tag/Tag";
 import { useState } from "react";
 
-const TaskForm = () => {
+const TaskForm = ({ setTask }) => {
   const [taskData, setTaskData] = useState({
     task: "",
     status: "Ready for Development",
     tags: [],
   });
 
-  const checkTag = (tag)=>{
-    return taskData.tags.some((item) => item === tag)
-  }
+  const checkTag = (tag) => {
+    return taskData.tags.some((item) => item === tag);
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,22 +22,24 @@ const TaskForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  }; 
+    setTask((prev) => {
+      return [...prev, taskData];
+    });
+  };
 
   const selectedTag = (tag) => {
-
-    setTaskData((prev)=>{
-        const isSelected = prev.tags.includes(tag);
-        const tags = isSelected 
+    setTaskData((prev) => {
+      const isSelected = prev.tags.includes(tag);
+      const tags = isSelected
         ? prev.tags.filter((item) => item !== tag)
-        : [...prev.tags, tag]
+        : [...prev.tags, tag];
 
-        return { ...prev , tags};
-      })    
+      return { ...prev, tags };
+    });
   };
-  
+
   console.log(taskData);
- 
+
   return (
     <header className="app_header">
       <form onSubmit={handleSubmit}>
@@ -51,22 +53,23 @@ const TaskForm = () => {
 
         <div className="task_form_bottom">
           <div>
-            <Tag 
-            tagName="DEV" 
-            selectedTag={selectedTag} 
-            selected={checkTag('DEV')} />
+            <Tag
+              tagName="DEV"
+              selectedTag={selectedTag}
+              selected={checkTag("DEV")}
+            />
 
-            <Tag 
-            tagName="QA" 
-            selectedTag={selectedTag}
-            selected={checkTag('QA')} />
+            <Tag
+              tagName="QA"
+              selectedTag={selectedTag}
+              selected={checkTag("QA")}
+            />
 
-            <Tag 
-            tagName="Product Owner" 
-            selectedTag={selectedTag}
-            selected={checkTag('Product Owner')}
-             />
-
+            <Tag
+              tagName="Product Owner"
+              selectedTag={selectedTag}
+              selected={checkTag("Product Owner")}
+            />
           </div>
           <div>
             <select
